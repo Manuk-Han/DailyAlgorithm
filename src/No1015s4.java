@@ -17,6 +17,8 @@ public class No1015s4 {
         for( int i = 0 ; i < arraySize ; i++ ){
             int input = scanner.nextInt();
             array[i] = sortedArray[i] =  input;
+
+
         }
 
         Arrays.sort(sortedArray);
