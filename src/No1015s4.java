@@ -17,8 +17,6 @@ public class No1015s4 {
         for( int i = 0 ; i < arraySize ; i++ ){
             int input = scanner.nextInt();
             array[i] = sortedArray[i] =  input;
-
-
         }
 
         Arrays.sort(sortedArray);
@@ -38,4 +36,4 @@ public class No1015s4 {
     }
 }
 
-//TODO : 맵으로 처리가 가능해 보임
+//TODO:맵으로 처리가 가능해 보임
