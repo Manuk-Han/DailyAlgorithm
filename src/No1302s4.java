@@ -23,8 +23,6 @@ public class No1302s4 {
         Object[] key = map.keySet().toArray();
         Arrays.sort(key);
 
-        for(Object k : key) System.out.println(k);
-
         int max = 0;
         String bestSeller = "";
         for(Object book : key){
@@ -34,6 +32,6 @@ public class No1302s4 {
             }
         }
 
-        //System.out.print(bestSeller);
+        System.out.print(bestSeller);
     }
 }
