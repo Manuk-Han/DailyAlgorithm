@@ -26,9 +26,9 @@ public class No15720s5 {
 
         int set = Math.min(Math.min(b, s), d);
 
-        for(int i = b ; i > b-set ; i--) pay -= bugger[i-1]/10;
-        for(int i = s ; i > s-set ; i--) pay -= side[i-1]/10;
-        for(int i = d ; i > d-set ; i--) pay -= drink[i-1]/10;
+        for(int i = b ; i > b-set ; i--) pay -= bugger[i-1] / 10;
+        for(int i = s ; i > s-set ; i--) pay -= side[i-1] / 10;
+        for(int i = d ; i > d-set ; i--) pay -= drink[i-1] / 10;
 
         System.out.println(pay);
     }
