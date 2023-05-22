@@ -2,15 +2,27 @@ import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-        int sequence[] = {1,2,3,4,5}, k = 7;
+        int []height = {140, 21, 21, 32};
+        int []width = {2, 1, 3, 7};
 
-        int[] answer = {0,0};
+        int []arr = new int[10000001];
 
-        Arrays.sort(sequence);
+        int hMax = 0;
+        for(int i = 0 ; i < height.length ; i++) {
+            arr[height[i]] += width[i];
+            hMax = Math.max(hMax, height[i]);
+        }
 
-        int index = sequence.length-1;
+        int max = 0, w = 0;
 
-        while(k < sequence[index]) index--;
+        for(int i = hMax ; i >= 0 ; i--){
+            if(!(arr[i] == 0)){
+                w += arr[i];
+                max = Math.max(max, w*i);
+            }
+        }
+
+        System.out.println(max);
     }
 }
 
