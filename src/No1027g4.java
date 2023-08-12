@@ -11,16 +11,19 @@ public class No1027g4 {
 
         for(int i = 0 ; i < N ; i++) input[i] = scanner.nextInt();
 
-        int[] up = new int[N], down = new int[N];
-        for(int i = 1 ; i < N ; i++){
-            if(input[i] > input[i-1]) up[i] = up[i-1]+1;
-            else if(input[i] == input[i-1]) up[i] = up[i-1];
-            else up[i] = 0;
-        }
-        for(int i = N-2 ; i >= 0 ; i--){
-            if(input[i] > input[i+1]) down[i] = down[i-1]+1;
-            else if(input[i] == input[i+1]) down[i] = down[i-1];
-            else down[i] = 0;
+        int buildings[] = new int[N];
+
+        for(int i = 0 ; i < N ; i++){
+            int upMax = input[i], downMax = input[i], upCount = 0, downCount = 0;
+            for(int j = i+1 ; j < N ; j++){
+                if(input[j] > upMax){
+                    upMax = input[j];
+                    upCount++;
+                }
+            }
+            for(int j = i-1 ; j >=0 ; j--){
+
+            }
         }
 
         System.out.println();

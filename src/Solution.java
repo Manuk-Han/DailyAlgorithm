@@ -1,28 +1,21 @@
 import java.util.*;
 
 public class Solution {
+
     public static void main(String[] args) {
-        int []height = {140, 21, 21, 32};
-        int []width = {2, 1, 3, 7};
+        Scanner scanner = new Scanner(System.in);
 
-        int []arr = new int[10000001];
+        StringBuilder sb = new StringBuilder();
 
-        int hMax = 0;
-        for(int i = 0 ; i < height.length ; i++) {
-            arr[height[i]] += width[i];
-            hMax = Math.max(hMax, height[i]);
+        for(int i = scanner.nextInt() ; i > 0 ; i--){
+            int n = scanner.nextInt(), answer = 0;
+
+            for(int j = 2 ; j < n+1 ; j++)
+                for(int k = n ; k%j == 0 ; k /= j) answer++;
+
+            sb.append(answer+"\n");
         }
 
-        int max = 0, w = 0;
-
-        for(int i = hMax ; i >= 0 ; i--){
-            if(!(arr[i] == 0)){
-                w += arr[i];
-                max = Math.max(max, w*i);
-            }
-        }
-
-        System.out.println(max);
+        System.out.println(sb);
     }
 }
-
