@@ -7,7 +7,6 @@ public class No11723s5 {
         Scanner scanner = new Scanner(System.in);
 
         int n = Integer.parseInt(scanner.nextLine());
-
         boolean arr[] = new boolean[20];
 
         String command = "";
