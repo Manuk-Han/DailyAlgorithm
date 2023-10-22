@@ -6,9 +6,8 @@ public class No25304b4 {
 
         int X = sc.nextInt();
 
-        for(int i = sc.nextInt() ; i > 0 ; i--)
-            X -= sc.nextInt() * sc.nextInt();
+        for(int i = sc.nextInt() ; i > 0 ; i--) X -= sc.nextInt() * sc.nextInt();
 
-        System.out.println(X == 0 ? "Yes" : "No");
+        System.out.print(X == 0 ? "Yes" : "No");
     }
 }
