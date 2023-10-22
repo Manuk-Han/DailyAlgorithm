@@ -4,9 +4,7 @@ public class No3460b3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int T = scanner.nextInt();
-
-        for(int i = 0 ; i < T ; i++){
+        for(int i = scanner.nextInt() ; i > 0 ; i--){
             String n = Integer.toBinaryString(scanner.nextInt());
             StringBuilder output = new StringBuilder();
 
