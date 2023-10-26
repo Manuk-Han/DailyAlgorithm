@@ -41,8 +41,54 @@
 
 package dclab;
 
-public class problem01 {
-    public static void main(String[] args) {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
 
+public class problem01 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = Integer.parseInt(br.readLine());
+
+        Map<String, List<String>> map = new HashMap<>();
+
+        List<String> fieldList = new ArrayList<>();
+
+        for(int i = 0 ; i < n ; i++) {
+            String inputArr[] = br.readLine().split(" ");
+
+            for(int j = 1 ; j < inputArr.length ; j++) {
+                if(map.get(inputArr[j]) == null) {
+                    fieldList.add(inputArr[j]);
+                    map.put(inputArr[j], new ArrayList<>());
+                }
+
+                List<String> field = map.get(inputArr[j]);
+                field.add(inputArr[0]);
+
+                map.put(inputArr[j], field);
+            }
+        }
+
+        int max = 0;
+
+        for(String key : fieldList)
+            max = Math.max(max, map.get(key).size());
+
+
+        for(String key : fieldList){
+            List<String> students = map.get(key);
+
+            if(students.size() == max){
+                String output = key + " : ";
+
+                for(String student : students)
+                    output += (student + ", ");
+
+                System.out.println(output.substring(0, output.length()-2));
+            }
+        }
     }
 }
