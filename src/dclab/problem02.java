@@ -37,17 +37,33 @@ import java.util.Scanner;
 public class problem02 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.close();
 
-        int x1 = scanner.nextInt(), y1 = scanner.nextInt(), x2 = scanner.nextInt(), y2 = scanner.nextInt();
+        String result = convertNumberToString(n);
+        System.out.println(result);
+    }
 
-        double lean = (double) (x1-x2)/(y1-y2), bias = (double) y1 - lean*x1, inverseLean = -1 / lean;
+    public static String convertNumberToString(int n) {
+        if (n == 0) {
+            return "a";
+        }
 
-        double x3 = lean * bias / (lean * lean + 1), y3 = x3 * inverseLean;
+        StringBuilder result = new StringBuilder();
 
-        double output = Math.sqrt(x3*x3 + y3*y3) * Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2)) / 2;
+        while (n > 0) {
+            int remainder = n % 100;
+            if (remainder > 26) {
+                int firstDigit = remainder / 10;
+                int secondDigit = remainder % 10;
+                result.insert(0, (char) ('a' + secondDigit - 1));
+                n = firstDigit;
+            } else {
+                result.insert(0, (char) ('a' + remainder - 1));
+                n = n / 100;
+            }
+        }
 
-        output = Math.round(output * 1000) / 1000.0;
-
-        System.out.println(output);
+        return result.toString();
     }
 }
