@@ -41,54 +41,74 @@
 
 package dclab;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
 public class problem01 {
+    static int problemNum = 6;
+    static String inFileName = problemNum + ".in";
+    static String outFileName = problemNum + ".out";
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(br.readLine());
 
-        Map<String, List<String>> map = new HashMap<>();
+        try {
+            File inFile = new File("src/dclab/problem01/in/"+ inFileName);
+            File outFile = new File("src/dclab/problem01/out/"+ outFileName);
+            FileWriter writer = new FileWriter(inFile);
+            writer.write(n+"");
 
-        List<String> fieldList = new ArrayList<>();
+            Map<String, List<String>> map = new HashMap<>();
 
-        for(int i = 0 ; i < n ; i++) {
-            String inputArr[] = br.readLine().split(" ");
+            List<String> fieldList = new ArrayList<>();
 
-            for(int j = 1 ; j < inputArr.length ; j++) {
-                if(map.get(inputArr[j]) == null) {
-                    fieldList.add(inputArr[j]);
-                    map.put(inputArr[j], new ArrayList<>());
+            for (int i = 0; i < n; i++) {
+                String input = br.readLine();
+                writer.write("\n" + input);
+
+                String inputArr[] = input.split(" ");
+
+                for (int j = 1; j < inputArr.length; j++) {
+                    if (map.get(inputArr[j]) == null) {
+                        fieldList.add(inputArr[j]);
+                        map.put(inputArr[j], new ArrayList<>());
+                    }
+
+                    List<String> field = map.get(inputArr[j]);
+                    field.add(inputArr[0]);
+
+                    map.put(inputArr[j], field);
                 }
-
-                List<String> field = map.get(inputArr[j]);
-                field.add(inputArr[0]);
-
-                map.put(inputArr[j], field);
             }
-        }
 
-        int max = 0;
+            writer.close();
+            writer = new FileWriter(outFile);
 
-        for(String key : fieldList)
-            max = Math.max(max, map.get(key).size());
+            int max = 0;
+
+            for (String key : fieldList)
+                max = Math.max(max, map.get(key).size());
 
 
-        for(String key : fieldList){
-            List<String> students = map.get(key);
+            for (String key : fieldList) {
+                List<String> students = map.get(key);
 
-            if(students.size() == max){
-                String output = key + " : ";
+                if (students.size() == max) {
+                    String output = key + " : ";
 
-                for(String student : students)
-                    output += (student + ", ");
+                    for (String student : students)
+                        output += (student + ", ");
 
-                System.out.println(output.substring(0, output.length()-2));
+                    writer.write(output.substring(0, output.length() - 2)+"\n");
+
+                    System.out.println(output.substring(0, output.length() - 2));
+                }
             }
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
