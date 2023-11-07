@@ -1,23 +1,18 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class No2566b1 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner s=new Scanner(System.in);
 
-        int n = 0, m = 0, max = 0;
+        int n=0,m=0,k;
 
-        for(int i = 0 ; i < 9 ; i++){
-            for(int j = 0 ; j < 9 ; j++){
-                int input = scanner.nextInt();
-
-                if(input > max) {
-                    max = input;
-                    n = i;
-                    m = j;
-                }
+        for(int i=0;i<81;i++){
+            if ((k = s.nextInt()) > m) {
+                m = k;
+                n = i;
             }
         }
 
-        System.out.print(max + "\n" + (n+1) + " " + (m+1));
+        System.out.print(m + "\n" + (n/9+1) + " " + (n%9+1));
     }
 }
