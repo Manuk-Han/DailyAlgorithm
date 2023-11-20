@@ -1,22 +1,21 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class No2491s4 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
 
-        int num = scanner.nextInt(), now = scanner.nextInt();
-        int count = 1, min = 1, max = 1;
+        int now, input = 0, count = 1, min = 1, max = 0;
 
-        for(int i = 0 ; i < num-1 ; i++){
-            int input = scanner.nextInt();
+        for(int i = s.nextInt(); i > 0 ; i--){
+            now = input;
+            input = s.nextInt();
 
             min = input > now ? 1 : min+1;
             max = input < now ? 1 : max+1;
-            now = input;
 
             count = Math.max(count, Math.max(min, max));
         }
 
-        System.out.println(count);
+        System.out.print(count);
     }
 }
