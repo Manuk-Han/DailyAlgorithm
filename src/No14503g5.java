@@ -56,19 +56,18 @@ public class No14503g5 {
             }
 
             if(map[y][x] == 0) {
-                map[y][x] = 2;
                 clean++;
+                map[y][x] = 2;
                 cleaned++;
                 nowX = x;
                 nowY = y;
 
                 go(direction);
+                num = 0;
             } else {
                 back(direction);
                 clean++;
             }
-
-            num = 0;
         }
 
         System.out.println(clean);
