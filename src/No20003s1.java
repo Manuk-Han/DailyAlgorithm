@@ -36,7 +36,7 @@ public class No20003s1 {
             if(check[i] != 0)
                 result *= Math.pow(i, check[i]);
 
-        System.out.println(result);
+        System.out.println("1 " + result);
     }
 
     static int gcd(int a, int b) {
