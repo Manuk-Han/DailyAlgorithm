@@ -1,10 +1,8 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class No17252s4 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        String input = Integer.toString(scanner.nextInt(), 3);
+        String input = Integer.toString(new Scanner(System.in).nextInt(), 3);
 
         if(input.equals("0")) {
             System.out.println("NO");
