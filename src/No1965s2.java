@@ -1,21 +1,33 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class No1965s2 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = scanner.nextInt();
+        int N = Integer.parseInt(br.readLine());
 
         int[] arr = new int[1001];
+        int result = 0;
 
-        for(int i = 1 ; i <= N ; i++)
-            arr[scanner.nextInt()] = i;
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-        int[] dp = new int[1001];
-        dp[1] = 1;
+        while (st.hasMoreTokens()) {
+            int inputInt = Integer.parseInt(st.nextToken());
 
-        for(int i = 1 ; i < 1001 ; i++) {
+            int max = 0;
 
+            for(int j = 1 ; j < inputInt ; j++) {
+                if (arr[j] > max)
+                    max = arr[j];
+            }
+
+            arr[inputInt] = max + 1;
+            result = Math.max(result, arr[inputInt]);
         }
+
+        System.out.println(result);
     }
 }
