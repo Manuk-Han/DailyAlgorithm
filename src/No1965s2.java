@@ -20,6 +20,10 @@ public class No1965s2 {
             int max = 0;
 
             for(int j = 1 ; j < inputInt ; j++) {
+                if(arr[j] == j) {
+                    max = j;
+                    break;
+                }
                 if (arr[j] > max)
                     max = arr[j];
             }
