@@ -10,33 +10,30 @@ public class No2238s5 {
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int u = Integer.parseInt(st.nextToken()), n = Integer.parseInt(st.nextToken());
 
-        Map<Integer, ArrayList<String>> map = new HashMap<>();
+        Map<Integer, String> map = new HashMap<>();
+        int [] arr = new int[u+1];
 
         for(int i = 0 ; i < n ; i++){
             st = new StringTokenizer(br.readLine(), " ");
-            String value = st.nextToken();
-            int key = Integer.parseInt(st.nextToken());
+            String name = st.nextToken();
+            int price = Integer.parseInt(st.nextToken());
 
-            if(map.get(key) == null){
-                ArrayList<String> list = new ArrayList<>();
-                list.add(value);
-                map.put(key, list);
-            }
-            else{
-                ArrayList<String> list = map.get(key);
-                list.add(value);
-                map.put(key, list);
+            arr[price]++;
+
+            if(!map.containsKey(price)){
+                map.put(price, name);
             }
         }
 
-        int min = n;
-        String name = "";
-        for(int k : map.keySet()){
-            if(k < min && map.get(k).size() == 1){
-                min = k;
-                name = map.get(k).get(0);
+        int min = n, minPrice = 0;
+        for(int i = u ; i > 0 ; i--){
+            if(arr[i] != 0 && arr[i] <= min){
+                min = arr[i];
+                minPrice = i;
             }
         }
-        System.out.print(name + " " + min);
+
+        System.out.println(map.get(minPrice) + " " + minPrice);
     }
 }
+
